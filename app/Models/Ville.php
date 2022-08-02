@@ -10,4 +10,11 @@ class Ville extends Model
     use HasFactory;
 
     protected $fillable = ['nom'];
+
+    static public function selectVille($id){
+        $query = Ville::Select('nom')
+        ->WHERE('id', $id)
+        ->get();
+        return $query[0];
+    }
 }

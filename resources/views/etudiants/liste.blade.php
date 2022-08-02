@@ -33,20 +33,12 @@
                     @forelse($etudiants as $etudiant)
                         <tr>
                             <th scope="row">{{ $etudiant->id }}</th>
-                            <td>{{ $etudiant->nom }}</td>
+                            <td>{{ $etudiant->etudiantHasUser->name }}</td>
                             <td>{{ $etudiant->adresse }}</td>
                             <td>{{ $etudiant->telephone }}</td>
-                            <td>{{ $etudiant->email }}</td>
+                            <td>{{ $etudiant->etudiantHasUser->email }}</td>
                             <td>{{ $etudiant->dateNaissance }}</td>
-                            <td>
-                                @forelse($villes as $ville)
-                                    @if($ville->id === $etudiant->villes_id)
-                                        {{ $ville->nom }}
-                                    @endif
-                                @empty
-                                    Non renseigné
-                                @endforelse
-                            </td>
+                            <td>{{ $etudiant->etudiantHasVille->nom }}</td>
                             <td><a href="{{ route('etudiant.show', $etudiant->id) }}"><b>Voir Détails</b></a></td>
                         </tr>
                     @empty

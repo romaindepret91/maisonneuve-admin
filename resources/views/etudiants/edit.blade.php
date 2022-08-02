@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="control-group">
                                 <label for="title">Nom</label>
-                                <input value="{{ $user->name }}" type="text" name="nom" id="nom" class="form-control mt-2">
+                                <input value="{{ $etudiant->etudiantHasUser->name }}" type="text" name="nom" id="nom" class="form-control mt-2">
                             </div>
                             <div class="control-group mt-2">
                                 <label for="adresse">Adresse</label>
@@ -32,7 +32,7 @@
                             </div>
                             <div class="control-group mt-2">
                                 <label for="email">Email</label>
-                                <input value="{{ $user->email }}" type="email" name="email" id="email" class="form-control mt-2">
+                                <input value="{{ $etudiant->etudiantHasUser->email }}" type="email" name="email" id="email" class="form-control mt-2">
                             </div>
                             <div class="control-group mt-2">
                                 <label for="dateNaissance">Date de naissance</label>

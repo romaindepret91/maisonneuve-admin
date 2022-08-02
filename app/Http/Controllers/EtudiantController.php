@@ -18,8 +18,7 @@ class EtudiantController extends Controller
     public function index()
     {
         $etudiants = Etudiant::all(); 
-        $villes = Ville::all();
-        return view('etudiants.liste',['etudiants' => $etudiants, 'villes' => $villes]);
+        return view('etudiants.liste',['etudiants' => $etudiants]);
     }
 
     /**
@@ -66,9 +65,8 @@ class EtudiantController extends Controller
      */
     public function show(Etudiant $etudiant)
     {   
-        $ville = Ville::select()->where('id', '=', $etudiant->__get('villes_id'))->get();
-        $user = User::select()->where('id', '=', $etudiant->__get('users_id'))->get();
-        return view('etudiants.show', ['etudiant' => $etudiant, 'ville' => $ville[0], 'user' => $user[0]]);
+        $ville = Ville::selectVille($etudiant->__get('villes_id'));
+        return view('etudiants.show', ['etudiant' => $etudiant, 'ville' => $ville]);
     }
 
     /**
@@ -80,8 +78,7 @@ class EtudiantController extends Controller
     public function edit(Etudiant $etudiant)
     {
         $villes = Ville::all();
-        $user = User::select()->where('id', '=', $etudiant->__get('users_id'))->get();
-        return view('etudiants.edit', ['etudiant' => $etudiant, 'villes' => $villes, 'user' => $user[0]]);
+        return view('etudiants.edit', ['etudiant' => $etudiant, 'villes' => $villes]);
     }
 
     /**
