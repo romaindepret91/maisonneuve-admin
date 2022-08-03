@@ -5,11 +5,11 @@
         <div class="col-12 pt-5">
             <div class="row align-items-center">
                 <div class="col-8">
-                    <h1 class="display-one">Liste des étudiants</h1>
+                    <h1 class="display-one">@lang('lang.text_students_list_title')</h1>
                 </div>
-                <div class="col-4">
+                <div class="col-4 d-flex justify-content-end">
                     <a href="{{ route('etudiant.create') }}">
-                        <span class="btn btn-primary">Ajouter un nouvel étudiant</span>
+                        <span class="btn btn-primary">@lang('lang.text_students_list_add')</span>
                         <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#06295e" class="bi bi-plus-circle-fill ms-1" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                         </svg></span>
@@ -19,14 +19,14 @@
             <table class="table table-striped mt-3">
                 <thead class="table-primary">
                     <tr>
-                        <th scope="col">#Id</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Adresse</th>
-                        <th scope="col">Téléphone</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Date de Naissance</th>
-                        <th scope="col">Ville</th>
-                        <th scope="col">Fiche</th>
+                        <th scope="col">@lang('lang.text_students_id')</th>
+                        <th scope="col">@lang('lang.text_students_name')</th>
+                        <th scope="col">@lang('lang.text_students_address')</th>
+                        <th scope="col">@lang('lang.text_students_phone')</th>
+                        <th scope="col">@lang('lang.text_students_email')</th>
+                        <th scope="col">@lang('lang.text_students_birthday')</th>
+                        <th scope="col">@lang('lang.text_students_city')</th>
+                        <th scope="col">@lang('lang.text_students_list_card')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,10 +39,10 @@
                             <td>{{ $etudiant->etudiantHasUser->email }}</td>
                             <td>{{ $etudiant->dateNaissance }}</td>
                             <td>{{ $etudiant->etudiantHasVille->nom }}</td>
-                            <td><a href="{{ route('etudiant.show', $etudiant->id) }}"><b>Voir Détails</b></a></td>
+                            <td><a href="{{ route('etudiant.show', $etudiant->id) }}"><b>@lang('lang.text_students_list_details')</b></a></td>
                         </tr>
                     @empty
-                        <p class="text-warning">Aucun étudiant à afficher.</p>
+                        <p class="text-warning">@lang('lang.text_students_list_empty_list')</p>
                     @endforelse
                 </tbody>
             </table>

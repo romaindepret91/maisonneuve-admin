@@ -11,12 +11,13 @@
 </head>
 
 <body>
+@php $locale = session()->get('locale'); @endphp
     <div class="container-fluid position-relative bg-white d-flex p-0">
         <!-- Sidebar Start -->
         <div class="sidebar pb-3 w-25">
             <nav class="navbar bg-light navbar-light p-3">
                 <a href="." class="navbar-brand mx-4 mb-3 w-100">
-                    <h4 class="text-primary">Collège de Maisonneuve</h4>
+                    <h4 class="text-primary">@lang('lang.text_college')</h4>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -24,13 +25,13 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Administrateur</h6>
+                        <h6 class="mb-0">@lang('lang.text_admin')</h6>
                     </div>
                 </div>
                 <div class="navbar-nav nav-pills w-100 ms-4 mt-3">
-                    <h5 class="nav-item nav-header active">Tableau de bord</h5>
-                    <a href="{{ route('etudiants') }}" class="nav-item nav-link">Étudiants</a>
-                    <a href="{{ route('villes') }}" class="nav-item nav-link">Villes</a>
+                    <h5 class="nav-item nav-header active">@lang('lang.text_dashboard')</h5>
+                    <a href="{{ route('etudiants') }}" class="nav-item nav-link">@lang('lang.text_students')</a>
+                    <a href="{{ route('villes') }}" class="nav-item nav-link">@lang('lang.text_cities')</a>
                 </div>
             </nav>
         </div>
@@ -39,16 +40,16 @@
 
         <!-- Content Start -->
         <div class="content w-75">
-            <ul class="nav justify-content-end align-items-center bg-light py-2">
-                <li class="nav-item d-flex">
-                    <a class="nav-link active px-1" href="#">Fr /</a>
-                    <a class="nav-link active px-1" href="#">Ang</a>
+            <ul class="nav justify-content-end align-items-center bg-light py-2 pe-5">
+                <li class="nav-item d-flex align-items-center me-5">
+                    <span class="nav-link disabled pe-1">@lang('lang.text_loggedin')</span>
+                    <span> / </span>
+                    <a class="nav-link px-1 text-dark" href="{{ route('logout') }}">@lang('lang.text_logout')</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}">Se déconnecter</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-link disabled">Connecté</span>
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link active px-1 text-secondary @if($locale=='fr') text-decoration-underline fw-bolder @endif" href="{{ route('lang', 'fr') }}">@lang('lang.text_fr')</a>
+                    <span>/</span>
+                    <a class="nav-link active px-1 text-secondary @if($locale=='en') text-decoration-underline fw-bolder @endif" href="{{ route('lang', 'en') }}">@lang('lang.text_eng')</a>
                 </li>
             </ul>
             @yield('content')

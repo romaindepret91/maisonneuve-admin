@@ -5,12 +5,12 @@
         <div class="col-12 pt-5">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="display-one">Fiche Détaillée</h1>
+                    <h1 class="display-one">@lang('lang.text_students_show_title')</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <h4 class="display-one text-muted">Étudiant #{{ $etudiant->id }}</h4>
+                    <h4 class="display-one text-muted">@lang('lang.text_students_show_subtitle') #{{ $etudiant->id }}</h4>
                 </div>
             </div>
         </div>
@@ -63,14 +63,14 @@
             </li>
         </ul>
         <div class="card-body d-flex">
-            <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="card-link btn btn-outline-primary">Modifier</a>
+            <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="card-link btn btn-outline-primary">@lang('lang.text_update_button')</a>
             <form method="POST" class="ms-3">
                 @csrf
                 @method('DELETE')
-                <button class="card-link btn btn-outline-primary">Supprimer</a>
+                <button class="card-link btn btn-danger">@lang('lang.text_delete_button')</a>
             </form>
         </div>
     </div>
-    <a href="{{ route('etudiants') }}" class="btn btn-outline-primary mt-4">Retourner à la liste</a>
+    <a href="{{ route('etudiants') }}" class="btn btn-primary mt-4">@lang('lang.text_return_list_button')</a>
 </div>
 @endsection

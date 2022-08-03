@@ -85,7 +85,7 @@ class CustomAuthController extends Controller
 
         Auth::login($user, $request->get('remember'));
 
-        return redirect()->intended('dashboard')->withSuccess('Connexion à votre espace réussie, ');
+        return redirect()->intended('dashboard')->withSuccess('Bienvenue dans votre espace étudiant, ');
 
     }
 
