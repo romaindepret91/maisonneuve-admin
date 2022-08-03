@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::get('signup', [CustomAuthController::class, 'create'])->name('signup');
+Route::post('custom-signup', [CustomAuthController::class, 'store'])->name('custom.signup');
 
 Route::get('etudiants', [EtudiantController::class, 'index'])->name('etudiants');
 Route::get('etudiants/{etudiant}', [EtudiantController::class, 'show'])->name('etudiant.show');
