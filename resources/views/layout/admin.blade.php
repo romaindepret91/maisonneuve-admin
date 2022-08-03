@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid position-relative bg-white d-flex p-0">
         <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3 w-25">
+        <div class="sidebar pb-3 w-25">
             <nav class="navbar bg-light navbar-light p-3">
                 <a href="." class="navbar-brand mx-4 mb-3 w-100">
                     <h4 class="text-primary">Collège de Maisonneuve</h4>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav nav-pills w-100 ms-4 mt-3">
-                    <p class="nav-item nav-header active">Dashboard</p>
+                    <h5 class="nav-item nav-header active">Tableau de bord</h5>
                     <a href="{{ route('etudiants') }}" class="nav-item nav-link">Étudiants</a>
                     <a href="{{ route('villes') }}" class="nav-item nav-link">Villes</a>
                 </div>
@@ -39,7 +39,19 @@
 
         <!-- Content Start -->
         <div class="content w-75">
-        @yield('content')
+            <ul class="nav justify-content-end align-items-center bg-light py-2">
+                <li class="nav-item d-flex">
+                    <a class="nav-link active px-1" href="#">Fr /</a>
+                    <a class="nav-link active px-1" href="#">Ang</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">Se déconnecter</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link disabled">Connecté</span>
+                </li>
+            </ul>
+            @yield('content')
         </div>
         <!-- Content End -->
 

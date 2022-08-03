@@ -17,7 +17,7 @@
                                 @endif
                             </div>
                             <div class="form-group mb-3">
-                                <input type="email" placeholder="Pseudo" name="email" class="form-control" value="{{ old('email')}}">
+                                <input type="email" placeholder="Courriel" name="email" class="form-control" value="{{ old('email')}}">
                                 @if($errors->has('email'))
                                     <span class="text-danger">{{ $errors->first('email')}}</span>
                                 @endif
