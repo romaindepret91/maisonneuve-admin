@@ -23,6 +23,7 @@ return [
     //etudiants form
     'text_students_id'                  => '#Id',
     'text_students_name'                => 'Name',
+    'text_students_password'            => 'Password',
     'text_students_address'             => 'Address',
     'text_students_phone'               => 'Phone',
     'text_students_email'               => 'Email',

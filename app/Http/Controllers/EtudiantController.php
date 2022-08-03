@@ -40,19 +40,31 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create([
-            'name'      => $request->nom,
+        $request->validate([
+            'name'              => 'required|max:30|min:2',
+            'email'             => 'required|email|unique:users',
+            'password'          => 'required|min:6|max:10',
+            'adresse'           => 'required|max:120',
+            'telephone'         => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'dateNaissance'     => 'required|date_format:Y-m-d',
+            'ville'             => 'required|numeric'
+        ]);
+        $user = new User;
+        $user->fill([
+            'name'      => $request->name,
             'email'     => $request->email,
-            'password'  => Hash::make('123456')
+            'password'  => Hash::make($request->password)
         ]);
-
-        $etudiant = Etudiant::create([
-            'adresse'           => $request->adresse,
-            'telephone'         => $request->telephone,
-            'dateNaissance'     => $request->dateNaissance,
-            'villes_id'         => $request->villes,
-            'users_id'          => $user->id
+        $user->save();
+        $etudiant = new Etudiant;
+        $etudiant->fill([
+            'adresse'       => $request->adresse,
+            'telephone'     => $request->telephone,
+            'dateNaissance' => $request->dateNaissance,
+            'villes_id'     => $request->ville,
+            'users_id'      => $user->id
         ]);
+        $etudiant->save();
 
         return redirect(route('etudiant.show', $etudiant->id));
     }
@@ -90,10 +102,20 @@ class EtudiantController extends Controller
      */
     public function update(Request $request, Etudiant $etudiant)
     {
+        $request->validate([
+            'name'              => 'required|max:30|min:2',
+            'email'             => 'required|email|unique:users',
+            'password'          => 'required|min:6|max:10',
+            'adresse'           => 'required|max:120',
+            'telephone'         => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'dateNaissance'     => 'required|date_format:Y-m-d',
+            'ville'             => 'required|numeric'
+        ]);
         $user = User::select()->where('id', '=', $etudiant->__get('users_id'))->get();
         $user[0]->update([
-            'name'      => $request->nom,
+            'name'      => $request->name,
             'email'     => $request->email,
+            'password'  => Hash::make($request->password)
         ]);
 
         $etudiant->update([
