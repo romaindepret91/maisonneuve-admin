@@ -62,7 +62,7 @@
                             </div>
                             <div class="control-group mt-2">
                                 <label for="villes">@lang('lang.text_students_city')</label>
-                                <select name="villes" id="villes" class="form-control mt-2">
+                                <select name="ville" id="ville" class="form-control mt-2">
                                     @foreach($villes as $ville)
                                         <option value="{{ $ville->id }}" @if($ville->id === $etudiant->villes_id) selected @endif>{{ $ville->nom }}</option>
                                     @endforeach

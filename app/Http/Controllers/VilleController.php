@@ -36,8 +36,11 @@ class VilleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'              => 'required|min:2|max:30'
+        ]);
         $ville = Ville::create([
-            'nom'               => $request->nom,
+            'nom'               => $request->name,
         ]);
 
         return redirect(route('ville.show', $ville->id));
@@ -74,8 +77,11 @@ class VilleController extends Controller
      */
     public function update(Request $request, Ville $ville)
     {
+        $request->validate([
+            'name'              => 'min:2|max:30'
+        ]);
         $ville->update([
-            'nom'               => $request->nom,
+            'nom'               => $request->name,
         ]);
 
         return redirect(route('ville.show', $ville->id));

@@ -41,7 +41,7 @@ class EtudiantController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'              => 'required|max:30|min:2',
+            'name'              => 'required|min:2|max:30',
             'email'             => 'required|email|unique:users',
             'password'          => 'required|min:6|max:10',
             'adresse'           => 'required|max:120',
@@ -102,27 +102,30 @@ class EtudiantController extends Controller
      */
     public function update(Request $request, Etudiant $etudiant)
     {
+        $user = User::select()->where('id', '=', $etudiant->__get('users_id'))->get();
+        $user = $user[0];
         $request->validate([
-            'name'              => 'required|max:30|min:2',
-            'email'             => 'required|email|unique:users',
-            'password'          => 'required|min:6|max:10',
+            'name'              => 'required|min:2|max:30',
             'adresse'           => 'required|max:120',
             'telephone'         => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'dateNaissance'     => 'required|date_format:Y-m-d',
-            'ville'             => 'required|numeric'
+            'ville'             => 'numeric'
         ]);
-        $user = User::select()->where('id', '=', $etudiant->__get('users_id'))->get();
-        $user[0]->update([
+        if($user->email !== $request->email) $request->validate(['email' => 'email|unique:users']);
+        if($request->password !== null) {
+            $request->validate(['password' => 'min:6|max:10']);
+            $user->update(['password'  => Hash::make($request->password)]);
+        }
+        $user->update([
             'name'      => $request->name,
             'email'     => $request->email,
-            'password'  => Hash::make($request->password)
         ]);
 
         $etudiant->update([
             'adresse'           => $request->adresse,
             'telephone'         => $request->telephone,
             'dateNaissance'     => $request->dateNaissance,
-            'villes_id'         => $request->villes,
+            'villes_id'         => $request->ville,
         ]);
 
         return redirect(route('etudiant.show', $etudiant->id));

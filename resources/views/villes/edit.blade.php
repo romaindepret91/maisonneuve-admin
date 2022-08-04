@@ -20,8 +20,11 @@
                         <div class="row">
                             <div class="control-group">
                                 <label for="title">@lang('lang.text_cities_name')</label>
-                                <input value="{{ $ville->nom }}" type="text" name="nom" id="nom" class="form-control mt-2">
+                                <input value="{{ $ville->nom }}" type="text" name="name" id="name" class="form-control mt-2">
                             </div>
+                            @if($errors->has('name'))
+                                    <span class="text-danger d-inline-block mt-1">{{ $errors->first('name')}}</span>
+                            @endif
                             <div class="control-group">
                                 <input type="submit" class="btn btn-success mt-3" value="@lang('lang.text_send_button')">
                                 <a href="{{ route('ville.show', $ville->id) }}" class="btn btn-warning mt-3 ms-3">@lang('lang.text_cancel_button')</a>

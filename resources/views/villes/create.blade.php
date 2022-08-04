@@ -19,8 +19,11 @@
                         <div class="row">
                             <div class="control-group">
                                 <label for="title">Nom</label>
-                                <input type="text" name="nom" id="nom" class="form-control mt-2">
+                                <input type="text" name="name" id="name" class="form-control mt-2">
                             </div>
+                            @if($errors->has('name'))
+                                    <span class="text-danger d-inline-block mt-1">{{ $errors->first('name')}}</span>
+                            @endif
                             <div class="control-group">
                                 <input type="submit" class="btn btn-success mt-3">
                             </div>
