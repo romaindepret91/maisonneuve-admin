@@ -5,6 +5,7 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\VilleController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\LocalizationController; 
+use App\Http\Controllers\BlogPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +44,8 @@ Route::get('ville-create', [VilleController::class, 'create'])->name('ville.crea
 Route::post('ville-create', [VilleController::class, 'store'])->name('ville.store')->middleware('auth');
 Route::get('ville-edit/{ville}', [VilleController::class, 'edit'])->name('ville.edit')->middleware('auth');
 Route::put('ville-edit/{ville}', [VilleController::class, 'update'])->name('ville.update')->middleware('auth');
+
+Route::get('blogposts', [BlogPostController::class, 'index'])->name('blogposts')->middleware('auth');
+Route::get('blogpost-create', [BlogPostController::class, 'create'])->name('blogpost.create')->middleware('auth');
 
 Route::get('lang/{locale}', [LocalizationController::class, 'index'])->name('lang');

@@ -11,13 +11,16 @@
 </head>
 
 <body>
-@php $locale = session()->get('locale'); @endphp
+@php 
+$locale = session()->get('locale'); 
+$username = Auth::user()->name;
+@endphp
     <div class="container-fluid position-relative bg-white d-flex p-0">
         <!-- Sidebar Start -->
         <div class="sidebar pb-3 w-25">
             <nav class="navbar bg-light navbar-light p-3">
                 <a href="." class="navbar-brand mx-4 mb-3 w-100">
-                    <h4 class="text-primary">@lang('lang.text_college')</h4>
+                    <img class="mt-5" src="assets/logo.png" alt="logo" style="width:250px">
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -25,13 +28,14 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">@lang('lang.text_admin')</h6>
+                        <h6 class="mb-0">{{ $username }}</h6>
                     </div>
                 </div>
                 <div class="navbar-nav nav-pills w-100 ms-4 mt-3">
                     <h5 class="nav-item nav-header active">@lang('lang.text_dashboard')</h5>
                     <a href="{{ route('etudiants') }}" class="nav-item nav-link">@lang('lang.text_students')</a>
                     <a href="{{ route('villes') }}" class="nav-item nav-link">@lang('lang.text_cities')</a>
+                    <a href="{{ route('blogposts') }}" class="nav-item nav-link">@lang('lang.text_forum')</a>
                 </div>
             </nav>
         </div>

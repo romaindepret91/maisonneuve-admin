@@ -2,18 +2,40 @@
 //EN
 
 return [
+
+    //welcome page (app)
+    'text_welcome_page_title'   => 'Welcome to the administation interface',
+
+    //login
+    'text_login_title'          => 'Log In',
+    'text_login_form_email'     => 'Email',
+    'text_login_form_password'  => 'Password',
+    'text_login_not_member'     => 'Not a member? Create an account',
+
+    //signup
+    'text_signup_title'                 => 'Create an account',
+    'text_signup_name'                  => 'Name',
+    'text_signup_password'              => 'Password',
+    'text_signup_address'               => 'Address',
+    'text_signup_phone'                 => 'Phone',
+    'text_signup_email'                 => 'Email',
+    'text_signup_birthday'              => 'Date of birth',
+    'text_signup_city'                  => 'City',
+    'text_signup_already_member'        => 'Already a Member? Log in here!',
+
     //layout.admin
-    'text_college'      => 'Maisonneuve College',
-    'text_admin'        => 'Administrator',
     'text_dashboard'    => 'Dashboard',
     'text_students'     => 'Students',
     'text_cities'       => 'Cities',
+    'text_forum'        => 'Forum',
     'text_loggedin'     => 'Logged in',
     'text_logout'       => 'Log out',
     'text_fr'           => 'Fr',
     'text_eng'          => 'En',
 
     //buttons
+    'text_loggin_button'        => 'Log In',
+    'text_signup_button'        => 'Sign Up',
     'text_send_button'          => 'Send',
     'text_cancel_button'        => 'Cancel',    
     'text_update_button'        => 'Update',    
@@ -68,6 +90,20 @@ return [
     //villes.edit
     'text_cities_edit_title'           => 'Update a city',
     'text_cities_edit_subtitle'        => 'City',
+
+    //blogposts.liste
+    'text_blogposts_list_title'             => 'Forum',
+    'text_blogposts_list_add'               => 'Add an article',
+
+    //blogposts.create
+    'text_blogposts_create_title'                       => 'Add an article',
+    'text_blogposts_create_subtitle'                    => 'New article',
+    'text_blogposts_create_blogpostTitle'               => 'Title',
+    'text_blogposts_create_blogpostContent'             => 'Content',
+    'text_blogposts_create_blogpostLang'                => 'Language',
+    'text_blogposts_create_blogpostLang_placeholder'    => 'Select a language',
+    'text_blogposts_create_blogpostEng'                 => 'English',
+    'text_blogposts_create_blogpostFr'                  => 'French',
 
 
 ];

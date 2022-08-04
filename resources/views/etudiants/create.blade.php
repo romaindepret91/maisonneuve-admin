@@ -60,7 +60,7 @@
                                 @endif
                             </div>
                             <div class="control-group mt-2">
-                                <label for="villes">@lang('lang.text_students_city')</label>
+                                <label for="ville">@lang('lang.text_students_city')</label>
                                 <select name="ville" id="ville" class="form-control mt-2">
                                     <option value="" disabled selected>@lang('lang.text_students_city_placeholder')</option>
                                     @foreach($villes as $ville)
