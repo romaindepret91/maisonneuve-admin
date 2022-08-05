@@ -67,7 +67,7 @@
             <form method="POST" class="ms-3">
                 @csrf
                 @method('DELETE')
-                <button class="card-link btn btn-danger">@lang('lang.text_delete_button')</a>
+                <button class="card-link btn btn-danger">@lang('lang.text_delete_button')</button>
             </form>
         </div>
     </div>

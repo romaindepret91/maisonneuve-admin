@@ -38,6 +38,8 @@ return [
     'text_signup_button'        => 'Sign Up',
     'text_send_button'          => 'Send',
     'text_cancel_button'        => 'Cancel',    
+    'text_next_button'          => 'Next',    
+    'text_back_button'          => 'Back',    
     'text_update_button'        => 'Update',    
     'text_delete_button'        => 'Delete',    
     'text_return_list_button'   => 'Back to list',    
@@ -94,6 +96,11 @@ return [
     //blogposts.liste
     'text_blogposts_list_title'             => 'Forum',
     'text_blogposts_list_add'               => 'Add an article',
+    'text_blogposts_list_published'         => 'Published on',
+    'text_blogposts_list_by'                => 'by',
+    'text_blogposts_list_modified'          => 'Modified on',
+    'text_blogposts_list_empty'             => 'No article to display',
+    'text_blogposts_list_no_translation'    => 'No translation available',    
 
     //blogposts.create
     'text_blogposts_create_title'                       => 'Add an article',
@@ -104,6 +111,10 @@ return [
     'text_blogposts_create_blogpostLang_placeholder'    => 'Select a language',
     'text_blogposts_create_blogpostEng'                 => 'English',
     'text_blogposts_create_blogpostFr'                  => 'French',
+
+    //blogposts.edit
+    'text_blogposts_edit_title'                     => 'Update an article',
+    'text_blogposts_edit_subtitle'                  => 'Article',
 
 
 ];

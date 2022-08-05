@@ -1,5 +1,6 @@
 @extends('layout.admin')
 @section('content')
+@php $sessionUserId = Auth::user()->id; @endphp
 <div class="container-fluid px-5">
     <div class="row">
         <div class="col-10 pt-5">
@@ -17,12 +18,27 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <article class="blog-post">
-                    <h2 class="blog-post-title mb-1">Sample blog post</h2>
-                    <p class="blog-post-meta mt-2">January 1, 2021 by <a href="#">Mark</a></p>
-                    <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
-                    <hr>
-                </article>
+                @forelse($blogposts as $blogpost)
+                    <article class="blog-post mt-4">
+                        <h2 class="blog-post-title mb-1">@if($blogpost->titre) {{ $blogpost->titre }} @else @lang('lang.text_blogposts_list_no_translation') @endif</h2>
+                        <p class="blog-post-meta mt-2">@lang('lang.text_blogposts_list_published') {{ $blogpost->created_at->format('j M Y') }} @lang('lang.text_blogposts_list_by') <a href="{{ route('etudiant.show', $blogpost->etudiants_id) }}">{{ $blogpost->name }}</a></p>
+                        <p>@if($blogpost->body) {{ $blogpost->body }} @else @lang('lang.text_blogposts_list_no_translation') @endif</p>
+                        @if($sessionUserId == $blogpost->users_id)
+                            <div class="d-flex">
+                                <a href="{{ route('blogpost.edit', $blogpost->blogpost_id) }}" class="card-link btn btn-outline-primary me-3">@lang('lang.text_update_button')</a>
+                                <form action="blogposts/{{ $blogpost->blogpost_id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="card-link btn btn-danger">@lang('lang.text_delete_button')</button>
+                                </form>
+                            </div>
+                        @endif
+                        <hr>
+                        <p class="blog-post-meta mt-2">@lang('lang.text_blogposts_list_modified') {{ $blogpost->updated_at->format('j M Y') }}</p>
+                    </article>
+                @empty
+                        <p class="text-warning">@lang('lang.text_blogposts_list_empty')</p>
+                @endforelse
             </div>
         </div>
     </div>

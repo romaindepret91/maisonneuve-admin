@@ -15,10 +15,10 @@ class CreateBlogpostsTable extends Migration
     {
         Schema::create('blogposts', function (Blueprint $table) {
             $table->id();
-            $table->string('titre', 100);
-            $table->string('titre_fr', 100);
-            $table->text('body');
-            $table->text('body_fr');
+            $table->string('titre', 100)->nullable();
+            $table->string('titre_fr', 100)->nullable();
+            $table->text('body')->nullable();
+            $table->text('body_fr')->nullable();
             $table->unsignedBigInteger('etudiants_id');
             $table->timestamps();
 

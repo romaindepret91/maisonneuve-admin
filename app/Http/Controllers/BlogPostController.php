@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BlogPost;
+use App\Models\Blogpost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class BlogPostController extends Controller
+class BlogpostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        return view('blogposts.liste');
+        $blogposts = Blogpost::getBlogposts();
+        return view('blogposts.liste', ['blogposts' => $blogposts]);
     }
 
     /**
@@ -35,16 +37,42 @@ class BlogPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'lang'          => 'required',
+            'titre'         => 'required|min:2|max:100',
+            'body'          => 'required',
+        ]);
+        $lang = $request->lang;
+        switch($lang){
+            case 'fr':
+                $blogpost = new Blogpost;
+                $blogpost->fill([
+                    'titre_fr'  => $request->titre,
+                    'body_fr'   => $request->body,
+                    'etudiants_id'  => Auth::user()->id
+                ]);
+                $blogpost->save();
+                break;
+            case 'en':
+                $blogpost = new Blogpost;
+                $blogpost->fill([
+                    'titre'  => $request->titre,
+                    'body'   => $request->body,
+                    'etudiants_id'  => Auth::user()->id
+                ]);
+                $blogpost->save();
+                break;
+        }
+        return redirect(route('blogposts'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BlogPost  $blogPost
+     * @param  \App\Models\Blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function show(BlogPost $blogPost)
+    public function show(Blogpost $blogpost)
     {
         //
     }
@@ -52,34 +80,52 @@ class BlogPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BlogPost  $blogPost
+     * @param  \App\Models\Blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function edit(BlogPost $blogPost)
+    public function edit(Blogpost $blogpost)
     {
-        //
+        return view('blogposts.edit', ['blogpost' => $blogpost]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BlogPost  $blogPost
+     * @param  \App\Models\Blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BlogPost $blogPost)
+    public function update(Request $request, Blogpost $blogpost)
     {
-        //
+        $request->validate(['lang' => 'required']);
+        if(!$request->body && !$request->titre) {
+            return view('blogposts.edit', ['blogpost' => $blogpost, 'lang' => $request->lang]);
+        }
+        else{
+            if($request->lang == 'en')
+                $blogpost->update([
+                    'titre' => $request->titre,
+                    'body'  => $request->body
+                ]);
+            elseif ($request->lang == 'fr')
+                $blogpost->update([
+                    'titre_fr'  => $request->titre,
+                    'body_fr'   => $request->body
+                ]);
+            return redirect(route('blogposts'));
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BlogPost  $blogPost
+     * @param  \App\Models\Blogpost  $blogpost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BlogPost $blogPost)
+    public function destroy(Blogpost $blogpost)
     {
-        //
+        $blogpost->delete();
+
+        return redirect(route('blogposts'));
     }
 }

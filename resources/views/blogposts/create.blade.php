@@ -18,26 +18,25 @@
                         @csrf
                         <div class="row">
                             <div class="control-group">
-                                <label for="blogpostTitle">@lang('lang.text_blogposts_create_blogpostTitle')</label>
-                                <input type="text" name="blogpostTitle" id="blogpostTitle" class="form-control mt-2" value="{{ old('blogpostTitle')}}">
-                                @if($errors->has('blogpostTitle'))
-                                    <span class="text-danger d-inline-block mt-1">{{ $errors->first('blogpostTitle')}}</span>
+                                <label for="titre">@lang('lang.text_blogposts_create_blogpostTitle')</label>
+                                <input type="text" name="titre" id="titre" class="form-control mt-2" value="{{ old('titre')}}">
+                                @if($errors->has('titre'))
+                                    <span class="text-danger d-inline-block mt-1">{{ $errors->first('titre')}}</span>
                                 @endif
                             </div>
                             <div class="control-group mt-2">
-                                <label for="blogpostContent">@lang('lang.text_blogposts_create_blogpostContent')</label>
-                                <textarea name="blogpostContent" id="blogpostContent" class="form-control mt-2" value="{{ old('blogpostContent')}}">
-                                </textarea>
-                                @if($errors->has('blogpostContent'))
-                                    <span class="text-danger d-inline-block mt-1">{{ $errors->first('blogpostContent')}}</span>
+                                <label for="body">@lang('lang.text_blogposts_create_blogpostContent')</label>
+                                <textarea name="body" id="body" class="form-control mt-2">{{ old('body')}}</textarea>
+                                @if($errors->has('body'))
+                                    <span class="text-danger d-inline-block mt-1">{{ $errors->first('body')}}</span>
                                 @endif
                             </div>
                             <div class="control-group mt-2">
                                 <label for="lang">@lang('lang.text_blogposts_create_blogpostLang')</label>
                                 <select name="lang" id="lang" class="form-control mt-2">
                                     <option value="" disabled selected>@lang('lang.text_blogposts_create_blogpostLang_placeholder')</option>
-                                    <option>@lang('lang.text_blogposts_create_blogpostEng')</option>
-                                    <option>@lang('lang.text_blogposts_create_blogpostFr')</option>
+                                    <option value="en">@lang('lang.text_blogposts_create_blogpostEng')</option>
+                                    <option value="fr">@lang('lang.text_blogposts_create_blogpostFr')</option>
                                 </select>
                                 @if($errors->has('lang'))
                                     <span class="text-danger d-inline-block mt-1">{{ $errors->first('lang')}}</span>

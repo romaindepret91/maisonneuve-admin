@@ -19,8 +19,8 @@ $username = Auth::user()->name;
         <!-- Sidebar Start -->
         <div class="sidebar pb-3 w-25">
             <nav class="navbar bg-light navbar-light p-3">
-                <a href="." class="navbar-brand mx-4 mb-3 w-100">
-                    <img class="mt-5" src="assets/logo.png" alt="logo" style="width:250px">
+                <a href="#" class="navbar-brand mx-4 mb-3 w-100">
+                    <img class="mt-5" src="/assets/logo.png" alt="logo" style="width:250px">
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
