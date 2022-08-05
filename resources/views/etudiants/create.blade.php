@@ -54,7 +54,7 @@
                             </div>
                             <div class="control-group mt-2">
                                 <label for="dateNaissance">@lang('lang.text_students_birthday')</label>
-                                <input type="date" name="dateNaissance" id="dateNaissance" class="form-control mt-2" value="{{ old('dateNaissance')}}">
+                                <input onfocus="(this.type='date')" name="dateNaissance" id="dateNaissance" class="form-control mt-2" value="{{ old('dateNaissance')}}">
                                 @if($errors->has('dateNaissance'))
                                     <span class="text-danger d-inline-block mt-1">{{ $errors->first('dateNaissance')}}</span>
                                 @endif

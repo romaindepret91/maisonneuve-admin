@@ -41,7 +41,7 @@
                                 @endif
                             </div>
                             <div class="form-group mb-3">
-                                <input type="date" placeholder="@lang('lang.text_signup_birthday')" style="color:#6e757c;" name="dateNaissance" class="form-control" value="{{ old('dateNaissance')}}">
+                                <input onfocus="(this.type='date')" placeholder="@lang('lang.text_signup_birthday')" style="color:#6e757c;" name="dateNaissance" class="form-control" value="{{ old('dateNaissance')}}">
                                 @if($errors->has('dateNaissance'))
                                     <span class="text-danger">{{ $errors->first('dateNaissance')}}</span>
                                 @endif
