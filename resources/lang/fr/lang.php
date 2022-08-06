@@ -28,6 +28,7 @@ return [
      'text_students'     => 'Étudiants',
      'text_cities'       => 'Villes',
      'text_forum'        => 'Forum',
+     'text_sharedFiles'  => 'Fichiers partagés',
      'text_loggedin'     => 'Connecté',
      'text_logout'       => 'Se déconnecter',
      'text_fr'           => 'Fr',
@@ -43,6 +44,8 @@ return [
     'text_update_button'        => 'Modifier',    
     'text_delete_button'        => 'Supprimer',  
     'text_return_list_button'   => 'Retourner à la liste',  
+    'text_download_button'      => 'Télécharger',  
+    'text_upload_button'        => 'Téléverser',  
 
      //etudiants form
      'text_students_id'                 => '#Id',
@@ -115,5 +118,24 @@ return [
      //blogposts.edit
      'text_blogposts_edit_title'                     => 'Modifier un article',
      'text_blogposts_edit_subtitle'                  => 'Article',
+
+     //sharedFiles.liste
+    'text_sharedFiles_liste_title'                  => 'Fichiers partagés',
+    'test_sharedFiles_liste_add'                    => 'Ajouter un nouveau fichier',
+    'test_sharedFiles_liste_empty'                  => 'Aucun fichier à afficher',
+
+    //shareFiles.create
+    'text_sharedFiles_create_title'                 => 'Ajout d\'un nouveau fichier',
+    'text_sharedFiles_create_subtitle'              => 'Nouveau fichier',
+
+    //shareFiles.create form
+    'text_sharedFiles_create_form_title'            => 'Titre',
+    'text_sharedFiles_create_form_file'             => 'Fichier',
+
+    //shareFiles.edit 
+    'text_sharedFiles_edit_title'                 => 'Modifier un fichier',
+    'text_sharedFiles_edit_subtitle'              => 'Fichier',
+    'text_sharedFiles_edit_form_current_file'     => 'Fichier actuel',
+    'text_sharedFiles_edit_form_new_file'         => 'Nouveau fichier',
 
 ];

@@ -17,7 +17,7 @@
             <li class="nav-item d-flex align-items-center">
                 <a class="nav-link active px-1 text-secondary @if($locale=='fr') text-decoration-underline fw-bolder @endif" href="{{ route('lang', 'fr') }}">@lang('lang.text_fr')</a>
                 <span>/</span>
-                <a class="nav-link active px-1 text-secondary @if($locale=='en') text-decoration-underline fw-bolder @endif" href="{{ route('lang', 'en') }}">@lang('lang.text_eng')</a>
+                <a class="nav-link active px-1 text-secondary @if($locale=='en' || empty($locale)) text-decoration-underline fw-bolder @endif" href="{{ route('lang', 'en') }}">@lang('lang.text_eng')</a>
             </li>
         </ul>
     </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\VilleController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\LocalizationController; 
 use App\Http\Controllers\BlogPostController;
+use App\Http\Controllers\SharedFileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +52,13 @@ Route::post('blogpost-create', [BlogpostController::class, 'store'])->name('blog
 Route::get('blogpost-edit/{blogpost}', [BlogpostController::class, 'edit'])->name('blogpost.edit')->middleware('auth');
 Route::put('blogpost-edit/{blogpost}', [BlogpostController::class, 'update'])->name('blogpost.update')->middleware('auth');
 Route::delete('blogposts/{blogpost}', [BlogpostController::class, 'destroy'])->name('blogpost.delete')->middleware('auth');
+
+Route::get('sharedFiles', [SharedFileController::class, 'index'])->name('sharedFiles')->middleware('auth');
+Route::get('sharedFiles/{sharedFile}', [SharedFileController::class, 'downloadSharedFile'])->name('sharedFile.download')->middleware('auth');
+Route::get('sharedFile-create', [SharedFileController::class, 'create'])->name('sharedFile.create')->middleware('auth');
+Route::post('sharedFile-create', [SharedFileController::class, 'store'])->name('sharedFile.store')->middleware('auth');
+Route::get('sharedFile-edit/{sharedFile}', [SharedFileController::class, 'edit'])->name('sharedFile.edit')->middleware('auth');
+Route::put('sharedFile-edit/{sharedFile}', [SharedFileController::class, 'update'])->name('sharedFile.edit')->middleware('auth');
+Route::delete('sharedFiles/{sharedFile}', [SharedFileController::class, 'destroy'])->name('sharedFile.delete')->middleware('auth');
 
 Route::get('lang/{locale}', [LocalizationController::class, 'index'])->name('lang');

@@ -36,6 +36,7 @@ $username = Auth::user()->name;
                     <a href="{{ route('etudiants') }}" class="nav-item nav-link">@lang('lang.text_students')</a>
                     <a href="{{ route('villes') }}" class="nav-item nav-link">@lang('lang.text_cities')</a>
                     <a href="{{ route('blogposts') }}" class="nav-item nav-link">@lang('lang.text_forum')</a>
+                    <a href="{{ route('sharedFiles') }}" class="nav-item nav-link">@lang('lang.text_sharedFiles')</a>
                 </div>
             </nav>
         </div>
@@ -53,7 +54,7 @@ $username = Auth::user()->name;
                 <li class="nav-item d-flex align-items-center">
                     <a class="nav-link active px-1 text-secondary @if($locale=='fr') text-decoration-underline fw-bolder @endif" href="{{ route('lang', 'fr') }}">@lang('lang.text_fr')</a>
                     <span>/</span>
-                    <a class="nav-link active px-1 text-secondary @if($locale=='en') text-decoration-underline fw-bolder @endif" href="{{ route('lang', 'en') }}">@lang('lang.text_eng')</a>
+                    <a class="nav-link active px-1 text-secondary @if($locale=='en' || empty($locale)) text-decoration-underline fw-bolder @endif" href="{{ route('lang', 'en') }}">@lang('lang.text_eng')</a>
                 </li>
             </ul>
             @yield('content')
