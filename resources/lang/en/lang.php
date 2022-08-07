@@ -123,14 +123,17 @@ return [
     'text_sharedFiles_liste_title'                  => 'Shared Files',
     'test_sharedFiles_liste_add'                    => 'Add new file',
     'test_sharedFiles_liste_empty'                  => 'No file to display',
+    'text_sharedFiles_list_no_translation'          => 'No translation available for this file',   
 
     //shareFiles.create
-    'text_sharedFiles_create_title'                 => 'Add new file',
-    'text_sharedFiles_create_subtitle'              => 'New file',
-
-    //shareFiles.create form
-    'text_sharedFiles_create_form_title'                => 'Title',
-    'text_sharedFiles_create_form_file'                 => 'File',
+    'text_sharedFiles_create_title'                         => 'Add new file',
+    'text_sharedFiles_create_subtitle'                      => 'New file',
+    'text_sharedFiles_create_form_title'                    => 'Title',
+    'text_sharedFiles_create_form_file'                     => 'File',
+    'text_sharedFiles_create_blogpostLang'                  => 'Language',
+    'text_sharedFiles_create_sharedFileLang_placeholder'    => 'Select a language',
+    'text_sharedFiles_create_sharedFileEng'                 => 'English',
+    'text_sharedFiles_create_sharedFileFr'                  => 'French',
     
     //shareFiles.edit 
     'text_sharedFiles_edit_title'                 => 'Update file',

@@ -25,7 +25,7 @@
                         @method('PUT')
                         <div class="row">
                             <div class="control-group">
-                                <label for="titre">@lang('lang.text_blogposts_create_blogpostTitle')</label>
+                                <label for="titre">@lang('lang.text_sharedFiles_create_form_title')</label>
                                 <input type="text" name="titre" id="titre" class="form-control mt-2" value="@if(old('titre')) {{ old('titre') }} @else {{ $sharedFile->titre }} @endif">
                                 @if($errors->has('titre'))
                                     <span class="text-danger d-inline-block mt-1">{{ $errors->first('titre')}}</span>

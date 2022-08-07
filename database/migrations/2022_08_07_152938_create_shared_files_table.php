@@ -15,7 +15,8 @@ class CreateSharedFilesTable extends Migration
     {
         Schema::create('shared_files', function (Blueprint $table) {
             $table->id();
-            $table->string('titre', 100);
+            $table->string('titre', 100)->nullable();
+            $table->string('titre_fr', 100)->nullable();
             $table->string('file_path', 100);
             $table->unsignedBigInteger('etudiants_id');
             $table->timestamps();

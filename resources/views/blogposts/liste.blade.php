@@ -20,9 +20,9 @@
             <div class="row mt-4">
                 @forelse($blogposts as $blogpost)
                     <article class="blog-post mt-4">
-                        <h2 class="blog-post-title mb-1">@if($blogpost->titre) {{ $blogpost->titre }} @else @lang('lang.text_blogposts_list_no_translation') @endif</h2>
+                        <h2 class="blog-post-title mb-1">@if($blogpost->titre) {{ $blogpost->titre }} @else <i>@lang('lang.text_blogposts_list_no_translation')</i> @endif</h2>
                         <p class="blog-post-meta mt-2">@lang('lang.text_blogposts_list_published') {{ $blogpost->created_at->format('j M Y') }} @lang('lang.text_blogposts_list_by') <a href="{{ route('etudiant.show', $blogpost->etudiants_id) }}">{{ $blogpost->name }}</a></p>
-                        <p>@if($blogpost->body) {{ $blogpost->body }} @else @lang('lang.text_blogposts_list_no_translation') @endif</p>
+                        <p>@if($blogpost->body) {{ $blogpost->body }} @else <i>@lang('lang.text_blogposts_list_no_translation')</i> @endif</p>
                         @if($sessionUserId == $blogpost->users_id)
                             <div class="d-flex">
                                 <a href="{{ route('blogpost.edit', $blogpost->blogpost_id) }}" class="card-link btn btn-outline-primary me-3">@lang('lang.text_update_button')</a>

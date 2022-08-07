@@ -123,14 +123,17 @@ return [
     'text_sharedFiles_liste_title'                  => 'Fichiers partagés',
     'test_sharedFiles_liste_add'                    => 'Ajouter un nouveau fichier',
     'test_sharedFiles_liste_empty'                  => 'Aucun fichier à afficher',
+    'text_sharedFiles_list_no_translation'          => 'Pas de traduction disponible pour ce fichier',
 
     //shareFiles.create
-    'text_sharedFiles_create_title'                 => 'Ajout d\'un nouveau fichier',
-    'text_sharedFiles_create_subtitle'              => 'Nouveau fichier',
-
-    //shareFiles.create form
-    'text_sharedFiles_create_form_title'            => 'Titre',
-    'text_sharedFiles_create_form_file'             => 'Fichier',
+    'text_sharedFiles_create_title'                         => 'Ajout d\'un nouveau fichier',
+    'text_sharedFiles_create_subtitle'                      => 'Nouveau fichier',
+    'text_sharedFiles_create_form_title'                    => 'Titre',
+    'text_sharedFiles_create_form_file'                     => 'Fichier',
+    'text_sharedFiles_create_blogpostLang'                  => 'Langue',
+    'text_sharedFiles_create_sharedFileLang_placeholder'    => 'Choisir une langue',
+    'text_sharedFiles_create_sharedFileEng'                 => 'Anglais',
+    'text_sharedFiles_create_sharedFileFr'                  => 'Français',
 
     //shareFiles.edit 
     'text_sharedFiles_edit_title'                 => 'Modifier un fichier',

@@ -26,19 +26,19 @@
                 <ul class="list-group">
                 @forelse($sharedFiles as $sharedFile)
                     <li class="list-group-item d-flex align-items-center justify-content-between">
-                        <span>{{ $sharedFile->titre }}</span>
-                        @if($sharedFile->sharedFileHasEtudiant->etudiantHasUser->id == $sessionUserId)
+                        <span>@if($sharedFile->titre) {{ $sharedFile->titre }} @else <i>@lang('lang.text_sharedFiles_list_no_translation')</i> @endif </span>
+                        @if($sharedFile->users_id == $sessionUserId)
                             <div class="d-flex">
-                                <a href="{{ route('sharedFile.download', $sharedFile->id) }}" class="card-link btn btn-success">@lang('lang.text_download_button')</a>
-                                <a href="{{ route('sharedFile.edit', $sharedFile->id) }}" class="card-link btn btn-outline-primary ms-3">@lang('lang.text_update_button')</a>
-                                <form action="sharedFiles/{{ $sharedFile->id }}" method="POST" class="ms-3">
+                                <a href="{{ route('sharedFile.download', $sharedFile->shared_file_id) }}" class="card-link btn btn-success">@lang('lang.text_download_button')</a>
+                                <a href="{{ route('sharedFile.edit', $sharedFile->shared_file_id) }}" class="card-link btn btn-outline-primary ms-3">@lang('lang.text_update_button')</a>
+                                <form action="sharedFiles/{{ $sharedFile->shared_file_id }}" method="POST" class="ms-3">
                                     @csrf
                                     @method('DELETE')
                                     <button class="card-link btn btn-danger">@lang('lang.text_delete_button')</a>
                                 </form>
                             </div>
                         @else 
-                            <a href="{{ route('sharedFile.download', $sharedFile->id) }}" class="card-link btn btn-success">@lang('lang.text_download_button')</a>
+                            <a href="{{ route('sharedFile.download', $sharedFile->shared_file_id) }}" class="card-link btn btn-success">@lang('lang.text_download_button')</a>
                         @endif
                     </li>
                 @empty

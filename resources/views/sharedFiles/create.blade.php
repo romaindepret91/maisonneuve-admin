@@ -24,10 +24,21 @@
                         @csrf
                         <div class="row">
                             <div class="control-group">
-                                <label for="titre">@lang('lang.text_blogposts_create_blogpostTitle')</label>
+                                <label for="titre">@lang('lang.text_sharedFiles_create_form_title')</label>
                                 <input type="text" name="titre" id="titre" class="form-control mt-2" value="{{ old('titre')}}">
                                 @if($errors->has('titre'))
                                     <span class="text-danger d-inline-block mt-1">{{ $errors->first('titre')}}</span>
+                                @endif
+                            </div>
+                            <div class="control-group mt-2">
+                                <label for="lang">@lang('lang.text_sharedFiles_create_blogpostLang')</label>
+                                <select name="lang" id="lang" class="form-control mt-2">
+                                    <option value="" disabled selected>@lang('lang.text_sharedFiles_create_sharedFileLang_placeholder')</option>
+                                    <option value="en">@lang('lang.text_sharedFiles_create_sharedFileEng')</option>
+                                    <option value="fr">@lang('lang.text_sharedFiles_create_sharedFileFr')</option>
+                                </select>
+                                @if($errors->has('lang'))
+                                    <span class="text-danger d-inline-block mt-1">{{ $errors->first('lang')}}</span>
                                 @endif
                             </div>
                             <div class="control-group mt-2">

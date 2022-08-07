@@ -17,7 +17,7 @@ class SharedFileController extends Controller
      */
     public function index()
     {
-        $sharedFiles = SharedFile::all();
+        $sharedFiles = SharedFile::getSharedFiles();
         return view('sharedFiles.liste', ['sharedFiles' => $sharedFiles]);
     }
 
@@ -45,14 +45,27 @@ class SharedFileController extends Controller
             'titre' => 'required|min:2|max:100',
             'file'  => 'required|mimes:pdf,zip,doc,docx|max:2048'
         ]);
-        $sharedFile = new sharedFile;
         $sharedFileName = time() . '_' . $request->file->getClientOriginalName();
         $sharedFilePath = $request->file('file')->storeAs('uploads/' . $etudiant->id, $sharedFileName, 'public');
-        $sharedFile->fill([
-            'titre'         => $request->titre,
-            'file_path'     => $sharedFilePath,
-            'etudiants_id'  => $etudiant->id
-        ]);
+        $lang = $request->lang;
+        switch($lang){
+            case 'fr':
+                $sharedFile = new sharedFile;
+                $sharedFile->fill([
+                    'titre_fr'      => $request->titre,
+                    'file_path'     => $sharedFilePath,
+                    'etudiants_id'  => $etudiant->id
+                ]);
+                break;
+            case 'en':
+                $sharedFile = new sharedFile;
+                $sharedFile->fill([
+                    'titre'         => $request->titre,
+                    'file_path'     => $sharedFilePath,
+                    'etudiants_id'  => $etudiant->id
+                ]);
+                break;
+        }
         $sharedFile->save();
         return redirect(route('sharedFiles'))->with('success', 'File had been uploaded');
     }
