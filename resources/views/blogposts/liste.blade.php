@@ -6,7 +6,7 @@
         <div class="col-10 pt-5">
             <div class="row align-items-center">
                 <div class="col-8">
-                    <h1 class="display-one">@lang('lang.text_blogposts_list_title')</h1>
+                    <h1 class="display-one mb-0">@lang('lang.text_blogposts_list_title')</h1>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <a href="{{ route('blogpost.create') }}">
@@ -17,7 +17,7 @@
                     </a>
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row mt-4">
                 @forelse($blogposts as $blogpost)
                     <article class="blog-post mt-4">
                         <h2 class="blog-post-title mb-1">@if($blogpost->titre) {{ $blogpost->titre }} @else @lang('lang.text_blogposts_list_no_translation') @endif</h2>

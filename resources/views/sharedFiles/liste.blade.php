@@ -6,7 +6,7 @@
         <div class="col-10 pt-5">
             <div class="row align-items-center">
                 <div class="col-8">
-                    <h1 class="display-one">@lang('lang.text_sharedFiles_liste_title')</h1>
+                    <h1 class="display-one mb-0">@lang('lang.text_sharedFiles_liste_title')</h1>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <a href="{{ route('sharedFile.create') }}">
@@ -22,7 +22,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            <div class="row mt-5">
+            <div class="row mt-4">
                 <ul class="list-group">
                 @forelse($sharedFiles as $sharedFile)
                     <li class="list-group-item d-flex align-items-center justify-content-between">

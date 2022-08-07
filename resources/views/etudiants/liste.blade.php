@@ -5,7 +5,7 @@
         <div class="col-12 pt-5">
             <div class="row align-items-center">
                 <div class="col-8">
-                    <h1 class="display-one">@lang('lang.text_students_list_title')</h1>
+                    <h1 class="display-one mb-0">@lang('lang.text_students_list_title')</h1>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
                     <a href="{{ route('etudiant.create') }}">
@@ -16,7 +16,7 @@
                     </a>
                 </div>
             </div>
-            <table class="table table-striped mt-3">
+            <table class="table table-striped mt-4">
                 <thead class="table-primary">
                     <tr>
                         <th scope="col">@lang('lang.text_students_id')</th>
