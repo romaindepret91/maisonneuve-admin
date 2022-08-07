@@ -63,7 +63,7 @@ class BlogpostController extends Controller
                 $blogpost->save();
                 break;
         }
-        return redirect(route('blogposts'));
+        return redirect(route('blogposts'))->with('success', 'Post added with success');
     }
 
     /**
@@ -112,7 +112,7 @@ class BlogpostController extends Controller
                     'titre_fr'  => $request->titre,
                     'body_fr'   => $request->body
                 ]);
-            return redirect(route('blogposts'));
+            return redirect(route('blogposts'))->with('success', 'Post updated with success');
         }
     }
 
@@ -126,6 +126,6 @@ class BlogpostController extends Controller
     {
         $blogpost->delete();
 
-        return redirect(route('blogposts'));
+        return redirect(route('blogposts'))->with('success', 'Post deleted with success');
     }
 }

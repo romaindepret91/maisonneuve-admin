@@ -67,7 +67,7 @@ class SharedFileController extends Controller
                 break;
         }
         $sharedFile->save();
-        return redirect(route('sharedFiles'))->with('success', 'File had been uploaded');
+        return redirect(route('sharedFiles'))->with('success', 'File uploaded with success');
     }
 
     public function downloadSharedFile(SharedFile $sharedFile) {
@@ -113,23 +113,38 @@ class SharedFileController extends Controller
      */
     public function update(Request $request, SharedFile $sharedFile)
     {
-        $request->validate([
-            'titre' => 'required|min:2|max:100',
-            'file'  => 'required|mimes:pdf,zip,doc,docx|max:2048'
-        ]);
-        $sharedFilePath = storage_path('app/public') . "/" . $sharedFile->file_path;
-        if(is_file($sharedFilePath)) {
-            unlink($sharedFilePath);
-            $etudiant = Etudiant::select('id')->where('users_id', '=', Auth::user()->id)->get();
-            $etudiant = $etudiant[0];
-            $sharedFileName = time() . '_' . $request->file->getClientOriginalName();
-            $sharedFilePath = $request->file('file')->storeAs('uploads/' . $etudiant->id, $sharedFileName, 'public');
-            $sharedFile->update([
-                'titre'     => $request->titre,
-                'file_path' => $sharedFilePath
+        
+        if($request->file){
+            $request->validate([
+                'file'      => 'mimes:pdf,zip,doc,docx|max:2048'
             ]);
-            return redirect(route('sharedFiles'))->with('success', 'File updated with success');
+            $sharedFilePath = storage_path('app/public') . "/" . $sharedFile->file_path;
+            if(is_file($sharedFilePath)) {
+                unlink($sharedFilePath);
+                $etudiant = Etudiant::select('id')->where('users_id', '=', Auth::user()->id)->get();
+                $etudiant = $etudiant[0];
+                $sharedFileName = time() . '_' . $request->file->getClientOriginalName();
+                $sharedFilePath = $request->file('file')->storeAs('uploads/' . $etudiant->id, $sharedFileName, 'public');
+                $sharedFile->update([
+                    'file_path'     => $sharedFilePath
+                ]);
+            }
         }
+        if($request->titre) {
+            $request->validate([
+                'titre'     => 'min:2|max:100',
+            ]);
+        }
+        if($request->titre_fr) {
+            $request->validate([
+                'titre_fr'     => 'min:2|max:100',
+            ]);
+        }
+        $sharedFile->update([
+            'titre'         => $request->titre,
+            'titre_fr'      => $request->titre_fr,
+        ]);
+        return redirect(route('sharedFiles'))->with('success', 'File updated with success');
     }
 
     /**
@@ -145,6 +160,6 @@ class SharedFileController extends Controller
             unlink($sharedFilePath);
             $sharedFile->delete();
         }
-        return redirect(route('sharedFiles'))->with('success', 'File deleted from system');
+        return redirect(route('sharedFiles'))->with('success', 'File deleted with success');
     }
 }

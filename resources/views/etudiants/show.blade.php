@@ -15,6 +15,11 @@
             </div>
         </div>
     </div>
+    @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">{{ session()->get('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="card mt-3" style="width: 30rem;">
         <div class="card-body bg-light">
             <h5 class="card-title">{{ $etudiant->etudiantHasUser->name }}</h5>

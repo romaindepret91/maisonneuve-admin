@@ -25,10 +25,17 @@
                         @method('PUT')
                         <div class="row">
                             <div class="control-group">
-                                <label for="titre">@lang('lang.text_sharedFiles_create_form_title')</label>
+                                <label for="titre">@lang('lang.text_sharedFiles_edit_form_title_en')</label>
                                 <input type="text" name="titre" id="titre" class="form-control mt-2" value="@if(old('titre')) {{ old('titre') }} @else {{ $sharedFile->titre }} @endif">
                                 @if($errors->has('titre'))
                                     <span class="text-danger d-inline-block mt-1">{{ $errors->first('titre')}}</span>
+                                @endif
+                            </div>
+                            <div class="control-group mt-2">
+                                <label for="titre_fr">@lang('lang.text_sharedFiles_edit_form_title_fr')</label>
+                                <input type="text" name="titre_fr" id="titre_fr" class="form-control mt-2" value="@if(old('titre_fr')) {{ old('titre_fr') }} @else {{ $sharedFile->titre_fr }} @endif">
+                                @if($errors->has('titre_fr'))
+                                    <span class="text-danger d-inline-block mt-1">{{ $errors->first('titre_fr')}}</span>
                                 @endif
                             </div>
                             <div class="control-group mt-2" style="pointer-events:none;">

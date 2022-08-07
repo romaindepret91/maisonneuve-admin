@@ -138,6 +138,8 @@ return [
     //shareFiles.edit 
     'text_sharedFiles_edit_title'                 => 'Modifier un fichier',
     'text_sharedFiles_edit_subtitle'              => 'Fichier',
+    'text_sharedFiles_edit_form_title_fr'         => 'Titre en français',
+    'text_sharedFiles_edit_form_title_en'         => 'Titre en anglais',
     'text_sharedFiles_edit_form_current_file'     => 'Fichier actuel',
     'text_sharedFiles_edit_form_new_file'         => 'Nouveau fichier',
 

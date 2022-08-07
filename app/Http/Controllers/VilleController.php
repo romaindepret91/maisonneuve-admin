@@ -43,7 +43,7 @@ class VilleController extends Controller
             'nom'               => $request->name,
         ]);
 
-        return redirect(route('ville.show', $ville->id));
+        return redirect(route('ville.show', $ville->id))->with('success', 'City added with success');
     }
 
     /**
@@ -84,7 +84,7 @@ class VilleController extends Controller
             'nom'               => $request->name,
         ]);
 
-        return redirect(route('ville.show', $ville->id));
+        return redirect(route('ville.show', $ville->id))->with('success', 'City updated with success');;
     }
 
     /**
@@ -97,6 +97,6 @@ class VilleController extends Controller
     {
         $ville->delete();
 
-        return redirect(route('villes'));
+        return redirect(route('villes'))->with('success', 'City deleted with success');
     }
 }

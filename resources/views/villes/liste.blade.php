@@ -16,6 +16,11 @@
                     </a>
                 </div>
             </div>
+            @if(session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">{{ session()->get('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <table class="table table-striped mt-4">
                 <thead class="table-primary">
                     <tr>

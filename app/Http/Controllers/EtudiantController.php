@@ -66,7 +66,7 @@ class EtudiantController extends Controller
         ]);
         $etudiant->save();
 
-        return redirect(route('etudiant.show', $etudiant->id));
+        return redirect(route('etudiant.show', $etudiant->id))->with('success', 'Student added with success');
     }
 
     /**
@@ -128,7 +128,7 @@ class EtudiantController extends Controller
             'villes_id'         => $request->ville,
         ]);
 
-        return redirect(route('etudiant.show', $etudiant->id));
+        return redirect(route('etudiant.show', $etudiant->id))->with('success', 'Student updated with success');
     }
 
     /**
@@ -144,6 +144,6 @@ class EtudiantController extends Controller
         $etudiant->delete();
         $user[0]->delete();
 
-        return redirect(route('etudiants'));
+        return redirect(route('etudiants'))->with('success', 'Student deleted with success');
     }
 }
