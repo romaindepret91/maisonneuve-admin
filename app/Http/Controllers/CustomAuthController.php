@@ -84,8 +84,11 @@ class CustomAuthController extends Controller
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
         Auth::login($user, $request->get('remember'));
-
-        return redirect()->intended('dashboard')->withSuccess('Bienvenue dans votre espace étudiant, ');
+        $locale = app()->getLocale();
+        $welcomeMsg = '';
+        if($locale === 'en') $welcomeMsg = 'Welcome to your student account, ';
+        elseif($locale === 'fr') $welcomeMsg = 'Bienvenue dans votre espace étudiant, ';
+        return redirect()->intended('dashboard')->withSuccess($welcomeMsg);
 
     }
 

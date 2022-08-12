@@ -23,7 +23,7 @@
     </div>
     <div class="container-fluid">
         <div class="row justify-content-center flex-wrap bg-light">
-            <img class="mt-1" src="assets/logo.png" alt="logo" style="width:400px">
+            <img class="mt-1" src="{{asset('assets/logo.png')}}" alt="logo" style="width:400px">
             <h1 class="col-6 text-center py-5" style="width:100%">@lang('lang.text_welcome_page_title')</h1>
         </div>
     </div>
