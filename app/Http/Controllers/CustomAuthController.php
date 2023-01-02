@@ -75,14 +75,13 @@ class CustomAuthController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
         $credentials = $request->only('email', 'password');
         if(!Auth::validate($credentials)): 
             return redirect('login')->withErrors(trans('auth.failed'));
         endif;
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
+      
         Auth::login($user, $request->get('remember'));
         $locale = app()->getLocale();
         $welcomeMsg = '';
