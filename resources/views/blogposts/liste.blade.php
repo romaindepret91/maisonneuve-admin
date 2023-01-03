@@ -9,7 +9,7 @@
                     <h1 class="display-one mb-0">@lang('lang.text_blogposts_list_title')</h1>
                 </div>
                 <div class="col-4 d-flex justify-content-end">
-                    <a href="{{ route('blogpost.create') }}">
+                    <a href="{{ route('blogposts.create') }}">
                         <span class="btn btn-primary">@lang('lang.text_blogposts_list_add')</span>
                         <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#06295e" class="bi bi-plus-circle-fill ms-1" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
@@ -30,7 +30,7 @@
                         <p>@if($blogpost->body) {{ $blogpost->body }} @else <i>@lang('lang.text_blogposts_list_no_translation')</i> @endif</p>
                         @if($sessionUserId == $blogpost->users_id)
                             <div class="d-flex">
-                                <a href="{{ route('blogpost.edit', $blogpost->blogpost_id) }}" class="card-link btn btn-outline-primary me-3">@lang('lang.text_update_button')</a>
+                                <a href="{{ route('blogposts.edit', $blogpost->blogpost_id) }}" class="card-link btn btn-outline-primary me-3">@lang('lang.text_update_button')</a>
                                 <form action="blogposts/{{ $blogpost->blogpost_id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
