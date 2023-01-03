@@ -31,7 +31,7 @@
                         @if($sessionUserId == $blogpost->users_id)
                             <div class="d-flex">
                                 <a href="{{ route('blogpost.edit', $blogpost->blogpost_id) }}" class="card-link btn btn-outline-primary me-3">@lang('lang.text_update_button')</a>
-                                <form action="blogposts/{{ $blogpost->blogpost_id }}" method="POST">
+                                <form action="blogArticles/{{ $blogpost->blogpost_id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="card-link btn btn-danger">@lang('lang.text_delete_button')</button>

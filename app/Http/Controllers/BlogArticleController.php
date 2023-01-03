@@ -108,6 +108,8 @@ class BlogArticleController extends Controller
      */
     public function destroy(BlogArticle $blogArticle)
     {
-        //
+        $blogArticle->delete();
+
+        return redirect(route('blogArticles.index'))->with('success', 'Post deleted with success');
     }
 }
