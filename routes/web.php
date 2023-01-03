@@ -46,7 +46,7 @@ Route::post('ville-create', [VilleController::class, 'store'])->name('ville.stor
 Route::get('ville-edit/{ville}', [VilleController::class, 'edit'])->name('ville.edit')->middleware('auth');
 Route::put('ville-edit/{ville}', [VilleController::class, 'update'])->name('ville.update')->middleware('auth');
 
-Route::get('blogposts', [BlogpostController::class, 'index'])->name('blogposts')->middleware('auth');
+Route::get('blogposts', 'App\Http\Controllers\BlogpostController@index')->name('blogposts')->middleware('auth');
 Route::get('blogpost-create', [BlogpostController::class, 'create'])->name('blogpost.create')->middleware('auth');
 Route::post('blogpost-create', [BlogpostController::class, 'store'])->name('blogpost.store')->middleware('auth');
 Route::get('blogpost-edit/{blogpost}', [BlogpostController::class, 'edit'])->name('blogpost.edit')->middleware('auth');
