@@ -17,16 +17,16 @@ class BlogArticle extends Model
             $lang = '_fr';
         }
 
-        $query = BlogPost::Select(
-            'blogposts.id as blogpost_id',
-            'blogposts.titre'.$lang.' as titre', 
-            'blogposts.body'.$lang.' as body', 
-            'blogposts.created_at', 
-            'blogposts.updated_at', 
+        $query = BlogArticle::Select(
+            'blog_articles.id as blogpost_id',
+            'blog_articles.titre'.$lang.' as titre', 
+            'blog_articles.body'.$lang.' as body', 
+            'blog_articles.created_at', 
+            'blog_articles.updated_at', 
             'users.name',
             'users.id as users_id',
             'etudiants.id as etudiants_id')
-        ->JOIN('etudiants', 'blogposts.etudiants_id', '=', 'etudiants.id')
+        ->JOIN('etudiants', 'blog_articles.etudiants_id', '=', 'etudiants.id')
         ->JOIN('users', 'etudiants.users_id', '=', 'users.id')
         ->get();
         return $query;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\VilleController;
@@ -52,6 +53,8 @@ Route::post('blogpost-create', [BlogpostController::class, 'store'])->name('blog
 Route::get('blogpost-edit/{blogpost}', [BlogpostController::class, 'edit'])->name('blogpost.edit')->middleware('auth');
 Route::put('blogpost-edit/{blogpost}', [BlogpostController::class, 'update'])->name('blogpost.update')->middleware('auth');
 Route::delete('blogposts/{blogpost}', [BlogpostController::class, 'destroy'])->name('blogpost.delete')->middleware('auth');
+
+Route::resource('blogArticles', BlogArticleController::class);
 
 Route::get('sharedFiles', [SharedFileController::class, 'index'])->name('sharedFiles')->middleware('auth');
 Route::get('sharedFiles/{sharedFile}', [SharedFileController::class, 'downloadSharedFile'])->name('sharedFile.download')->middleware('auth');
