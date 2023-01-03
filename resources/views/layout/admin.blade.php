@@ -35,7 +35,7 @@ $username = Auth::user()->name;
                     <h5 class="nav-item nav-header active">@lang('lang.text_dashboard')</h5>
                     <a href="{{ route('etudiants') }}" class="nav-item nav-link">@lang('lang.text_students')</a>
                     <a href="{{ route('villes') }}" class="nav-item nav-link">@lang('lang.text_cities')</a>
-                    <a href="{{ route('blogposts.index') }}" class="nav-item nav-link">@lang('lang.text_forum')</a>
+                    <a href="{{ route('blogposts') }}" class="nav-item nav-link">@lang('lang.text_forum')</a>
                     <a href="{{ route('sharedFiles') }}" class="nav-item nav-link">@lang('lang.text_sharedFiles')</a>
                 </div>
             </nav>

@@ -4,22 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use DB;
 
-class Blogpost extends Model
+class BlogArticle extends Model
 {
     use HasFactory;
-
     protected $fillable = ['titre', 'titre_fr', 'body', 'body_fr', 'etudiants_id'];
 
-    static public function getBlogposts() 
+    static public function getBlogArticles() 
     {
         $lang = "";
         if(session()->has('locale') && session()->get('locale') == 'fr'){
             $lang = '_fr';
         }
 
-        $query = Blogpost::Select(
+        $query = BlogPost::Select(
             'blogposts.id as blogpost_id',
             'blogposts.titre'.$lang.' as titre', 
             'blogposts.body'.$lang.' as body', 

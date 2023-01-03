@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blogpost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogpostController extends Controller
 {
@@ -25,7 +26,7 @@ class BlogpostController extends Controller
      */
     public function create()
     {
-        //
+        return view('blogposts.create');
     }
 
     /**
@@ -36,7 +37,33 @@ class BlogpostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'lang'          => 'required',
+            'titre'         => 'required|min:2|max:100',
+            'body'          => 'required',
+        ]);
+        $lang = $request->lang;
+        switch($lang){
+            case 'fr':
+                $blogpost = new Blogpost;
+                $blogpost->fill([
+                    'titre_fr'  => $request->titre,
+                    'body_fr'   => $request->body,
+                    'etudiants_id'  => Auth::user()->id
+                ]);
+                $blogpost->save();
+                break;
+            case 'en':
+                $blogpost = new Blogpost;
+                $blogpost->fill([
+                    'titre'  => $request->titre,
+                    'body'   => $request->body,
+                    'etudiants_id'  => Auth::user()->id
+                ]);
+                $blogpost->save();
+                break;
+        }
+        return redirect(route('blogposts'))->with('success', 'Post added with success');
     }
 
     /**
@@ -58,7 +85,7 @@ class BlogpostController extends Controller
      */
     public function edit(Blogpost $blogpost)
     {
-        //
+        return view('blogposts.edit', ['blogpost' => $blogpost]);
     }
 
     /**
@@ -70,7 +97,23 @@ class BlogpostController extends Controller
      */
     public function update(Request $request, Blogpost $blogpost)
     {
-        //
+        $request->validate(['lang' => 'required']);
+        if(!$request->body && !$request->titre) {
+            return view('blogposts.edit', ['blogpost' => $blogpost, 'lang' => $request->lang]);
+        }
+        else{
+            if($request->lang == 'en')
+                $blogpost->update([
+                    'titre' => $request->titre,
+                    'body'  => $request->body
+                ]);
+            elseif ($request->lang == 'fr')
+                $blogpost->update([
+                    'titre_fr'  => $request->titre,
+                    'body_fr'   => $request->body
+                ]);
+            return redirect(route('blogposts'))->with('success', 'Post updated with success');
+        }
     }
 
     /**
@@ -81,6 +124,8 @@ class BlogpostController extends Controller
      */
     public function destroy(Blogpost $blogpost)
     {
-        //
+        $blogpost->delete();
+
+        return redirect(route('blogposts'))->with('success', 'Post deleted with success');
     }
 }
