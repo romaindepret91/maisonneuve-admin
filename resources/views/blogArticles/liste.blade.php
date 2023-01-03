@@ -30,7 +30,7 @@
                         <p>@if($blogpost->body) {{ $blogpost->body }} @else <i>@lang('lang.text_blogposts_list_no_translation')</i> @endif</p>
                         @if($sessionUserId == $blogpost->users_id)
                             <div class="d-flex">
-                                <a href="{{ route('blogpost.edit', $blogpost->blogpost_id) }}" class="card-link btn btn-outline-primary me-3">@lang('lang.text_update_button')</a>
+                                <a href="{{ route('blogArticles.edit', $blogpost->blogpost_id) }}" class="card-link btn btn-outline-primary me-3">@lang('lang.text_update_button')</a>
                                 <form action="blogArticles/{{ $blogpost->blogpost_id }}" method="POST">
                                     @csrf
                                     @method('DELETE')

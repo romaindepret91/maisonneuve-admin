@@ -85,7 +85,7 @@ class BlogArticleController extends Controller
      */
     public function edit(BlogArticle $blogArticle)
     {
-        //
+        return view('blogArticles.edit', ['blogpost' => $blogArticle]);
     }
 
     /**
@@ -97,7 +97,22 @@ class BlogArticleController extends Controller
      */
     public function update(Request $request, BlogArticle $blogArticle)
     {
-        //
+        $request->validate(['lang' => 'required']);
+        if (!$request->body && !$request->titre) {
+            return view('blogArticles.edit', ['blogpost' => $blogArticle, 'lang' => $request->lang]);
+        } else {
+            if ($request->lang == 'en')
+                $blogArticle->update([
+                    'titre' => $request->titre,
+                    'body' => $request->body
+                ]);
+            elseif ($request->lang == 'fr')
+                $blogArticle->update([
+                    'titre_fr' => $request->titre,
+                    'body_fr' => $request->body
+                ]);
+            return redirect(route('blogArticles.index'))->with('success', 'Post updated with success');
+        }
     }
 
     /**
