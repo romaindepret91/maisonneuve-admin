@@ -15,7 +15,7 @@ class BlogArticleController extends Controller
     public function index()
     {
         $blogposts = BlogArticle::getBlogArticles();
-        return view('blogposts.liste', ['blogposts' => $blogposts]);
+        return view('blogArticles.liste', ['blogposts' => $blogposts]);
     }
 
     /**
