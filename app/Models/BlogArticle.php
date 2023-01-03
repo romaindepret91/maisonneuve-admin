@@ -28,6 +28,7 @@ class BlogArticle extends Model
             'etudiants.id as etudiants_id')
         ->JOIN('etudiants', 'blog_articles.etudiants_id', '=', 'etudiants.id')
         ->JOIN('users', 'etudiants.users_id', '=', 'users.id')
+        ->orderBy('created_at', 'DESC')
         ->get();
         return $query;
     }
