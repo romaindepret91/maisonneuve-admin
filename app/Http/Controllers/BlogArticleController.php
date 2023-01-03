@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogArticle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogArticleController extends Controller
 {
@@ -36,7 +37,33 @@ class BlogArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'lang'          => 'required',
+            'titre'         => 'required|min:2|max:100',
+            'body'          => 'required',
+        ]);
+        $lang = $request->lang;
+        switch($lang){
+            case 'fr':
+                $blogpost = new BlogArticle;
+                $blogpost->fill([
+                    'titre_fr'  => $request->titre,
+                    'body_fr'   => $request->body,
+                    'etudiants_id'  => Auth::user()->id
+                ]);
+                $blogpost->save();
+                break;
+            case 'en':
+                $blogpost = new BlogArticle;
+                $blogpost->fill([
+                    'titre'  => $request->titre,
+                    'body'   => $request->body,
+                    'etudiants_id'  => Auth::user()->id
+                ]);
+                $blogpost->save();
+                break;
+        }
+        return redirect(route('blogArticles.index'))->with('success', 'Post added with success');
     }
 
     /**

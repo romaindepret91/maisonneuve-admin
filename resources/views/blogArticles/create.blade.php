@@ -20,7 +20,7 @@
             <div class="card mt-4">
                 <div class="card-header">@lang('lang.text_blogposts_create_subtitle')</div>
                 <div class="card-body">
-                    <form method="post">
+                    <form action="/blogArticles" method="post">
                         @csrf
                         <div class="row">
                             <div class="control-group">
